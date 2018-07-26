@@ -1,23 +1,10 @@
 import unittest
 
-from scrapy import Selector
+from scrapy.selector import Selector
 
 from viewscount.viewscount.spiders.infinity import InfinityknowSpider
 
-
-doc = """
- <div>
-     <ul>
-         <li class="item-0"><a href="link1.html">first item</a></li>
-         <li class="item-1"><a href="link2.html">second item</a></li>
-         <li class="item-inactive"><a href="link3.html">third item</a></li>
-         <li class="item-1"><a href="link4.html">fourth item</a></li>
-         <li class="item-0"><a href="link5.html">fifth item</a></li>
-     </ul>
- </div>
- """
-
-doc2 = """
+post_item = """
 <article id="post-1700" class="post-item clearfix post-1700 post type-post status-publish format-standard hentry category-asp-net category-technology tag-difference-between-value-type-and-reference-type-in-c-code-project tag-heap-memory-meaning tag-how-objects-are-stored-in-memory-in-c tag-memory-allocation-in-c tag-stack-and-heap-in-c-msdn tag-stack-vs-heap-data-structure tag-stack-vs-queue-vs-heap tag-why-objects-are-stored-in-heap-in-c" itemtype="http://schema.org/BlogPosting" itemscope="itemscope">
 				<div class="post-item-desc">
 			<header class="entry-header">
@@ -88,7 +75,7 @@ header = """
 
 class TestArticleItemPage(unittest.TestCase):
     def setUp(self):
-        self.selector = Selector(text=doc2, type="html")
+        self.selector = Selector(text=post_item, type="html")
 
     def test_url_extraction(self):
         self.assertEqual('http://infinityknow.com/difference-between-stack-and-heap-memory-in-c-net/',
