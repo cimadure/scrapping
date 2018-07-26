@@ -7,7 +7,8 @@ python:
   - "3.7-dev"  # 3.7 development branch
 # command to install dependencies
 install:
-  - pip install -r requirements.txt
+  #upgrade strategy for 3.6 with pip 10
+  - pip install -r requirements.txt --upgrade-strategy=eager
 # command to run tests
 script:
   - python -m unittest
